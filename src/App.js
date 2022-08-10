@@ -31,7 +31,6 @@ function App() {
 
   return (
     <div>
-      <h1>Hello world!</h1>
       <NewExpense onAddExpense={addExpenseHandler} />
       <ExpenseList expenses={expenses} />
     </div>
