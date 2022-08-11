@@ -15,23 +15,26 @@ function ExpenseList(props) {
     });
   }
 
+  const filteredExpenses = props.expenses.filter(function(expense){
+    return expense.date.getFullYear().toString() === yearInput.filteredYear;
+  })
+
   return (
     <Card className="expenses">
       <ExpenseFilter
         selectedYear={yearInput.filteredYear}
         onFilterExpenseYear={filterExpenseYearHandler}
       />
-      {
-        props.expenses.map(function(expense){
-          return(
-            <ExpenseItem
-              title={expense.title}
-              amount={expense.amount}
-              date={expense.date}
-            />
-          );
-        })
-      }
+      {filteredExpenses.map(function (expense) {
+        return (
+          <ExpenseItem
+            key={expense.id}
+            title={expense.title}
+            amount={expense.amount}
+            date={expense.date}
+          />
+        );
+      })}
     </Card>
   );
 }
